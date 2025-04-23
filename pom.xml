@@ -13,4 +13,20 @@
         <maven.compiler.target>17</maven.compiler.target>
     </properties>
 
+    <repositories>
+        
+    </repositories>
+
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+        <!-- No groupId: com.google.code.gson => Faz referencia a pasta interna onde esta guardada a dependencia -->
+        <!-- No nosso caso esta em C:/Users/rodrigo/.m2/repository/com/google/code/gson -->
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.13.0</version>
+        </dependency>
+    </dependencies>
+
+
 </project>
