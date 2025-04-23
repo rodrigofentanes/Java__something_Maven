@@ -15,7 +15,7 @@ public class TmdbServices {
   public ResponseSearchMovieDTO serachMovieByName(String name) throws IOException, InterruptedException {
     HttpClient client = HttpClient.newHttpClient();
     HttpRequest request = HttpRequest.newBuilder()
-    .uri(URI.create("https://api.themoviedb.org/3/search/movie?query=" + name + "&include_adult=true&language=en-US"))
+    .uri(URI.create("https://api.themoviedb.org/3/search/movie?query=" + name.replace(" ", "+") + "&include_adult=true&language=en-US"))
     .setHeader("accept", "application/json")
     .setHeader("Authorization", "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhNGViNjk5N2E4YjM3NjhhZDc5M2ZkZGNmOTYxNTE0NCIsIm5iZiI6MTYwNTEzNjMzNi4xODksInN1YiI6IjVmYWM2ZmQwZmNiOGNjMDA0MGY4NzczNCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.j_J0q5nvtJMlt5wB6prMvYY305nFyPjBkSIlNskp3X8")
     .build();

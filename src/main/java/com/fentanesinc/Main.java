@@ -1,14 +1,12 @@
 package com.fentanesinc;
 
+import java.io.FileWriter;
 import java.io.IOException;
-import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
 import java.util.Scanner;
 
 import com.fentanesinc.Model.ResponseSearchMovieDTO;
 import com.fentanesinc.Services.TmdbServices;
+import com.google.gson.GsonBuilder;
 
 public class Main {
     public static void main(String[] args) throws IOException, InterruptedException {
@@ -18,6 +16,12 @@ public class Main {
         scan.close();
         
         ResponseSearchMovieDTO responseSearchMovieTO = TmdbServices.getInstance().serachMovieByName(name);
+
+        String jsonResult = new GsonBuilder().setPrettyPrinting().create().toJson(responseSearchMovieTO);
+
+        FileWriter file = new FileWriter("Result.json");
+        file.write(jsonResult);
+        file.close();
 
         for (ResponseSearchMovieDTO.Result result : responseSearchMovieTO.results) {
             System.out.println("#####################################");
